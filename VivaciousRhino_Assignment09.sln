@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "VivaciousRhino_Assignment09", "VivaciousRhino_Assignment09\VivaciousRhino_Assignment09.pyproj", "{6EEB892A-40CC-45E0-A234-22B8DEF7B0EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EEB892A-40CC-45E0-A234-22B8DEF7B0EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EEB892A-40CC-45E0-A234-22B8DEF7B0EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DEF03740-2F7B-4C72-9E1E-68426A2C1BBF}
+	EndGlobalSection
+EndGlobal
