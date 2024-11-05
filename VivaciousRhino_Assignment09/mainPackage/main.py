@@ -13,10 +13,16 @@ except Exception as e:
     print(e)
     exit() # give up
 
+    # Step One
 query_string = "SELECT ProductID, [UPC-A ], Description, ManufacturerID, BrandID FROM tProduct"
 print(query_string)
-results = cursor.execute(query_string)
-print(results)
-for row in results.fetchall():
-    print(row[2])
 
+    # Step Two
+results = cursor.execute(query_string).fetchall()
+random_row = random.choice(results)
+print(random_row)
+manufacturer_id = random_row[3]
+brand_id = random_row[4]
+print("Manufacturer ID = " + str(manufacturer_id) + " Brand ID = " + str(brand_id))
+
+    # Step Three
