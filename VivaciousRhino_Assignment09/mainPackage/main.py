@@ -1,5 +1,5 @@
-# Name: Greyson Barber
-# email:  barbergn@mail.uc.edu
+# Name: Greyson Barber | Kyle Hsu
+# email:  barbergn@mail.uc.edu | hsukt@mail.uc.edu
 # Assignment Number: Assignment 09
 # Due Date: 11/7/24
 # Course #/Section: IS4010-001
@@ -25,18 +25,14 @@ except Exception as e:
     print(e)
     exit() # give up
 
-    # Step One
 query_string = "SELECT ProductID, [UPC-A ], Description, ManufacturerID, BrandID FROM tProduct"
-print(query_string)
 
-    # Step Two
 results = cursor.execute(query_string).fetchall()
 random_row = random.choice(results)
-print(random_row)
 manufacturer_id = random_row[3]
 brand_id = random_row[4]
 product_id = random_row[0]
-print("Manufacturer ID = " + str(manufacturer_id) + " Brand ID = " + str(brand_id))
+description = random_row[2]
 
 
 manufacturer_query = f"SELECT Manufacturer FROM tManufacturer WHERE ManufacturerID = {manufacturer_id}" 
@@ -45,6 +41,22 @@ manufacturer_name = cursor.execute(manufacturer_query).fetchone()[0]
 
 brand_query = f"SELECT Brand FROM tBrand WHERE BrandID = {brand_id}" 
 brand_name = cursor.execute(brand_query).fetchone()[0]
+
+items_sold_query = f"""
+            SELECT TOP (100) PERCENT SUM(dbo.tTransactionDetail.QtyOfProduct) AS NumberOfItemsSold
+            FROM dbo.tTransactionDetail
+            INNER JOIN dbo.tTransaction ON dbo.tTransactionDetail.TransactionID = dbo.tTransaction.TransactionID
+            WHERE (dbo.tTransaction.TransactionTypeID = 1) AND (dbo.tTransactionDetail.ProductID = {product_id})
+        """
+number_of_items_sold = cursor.execute(items_sold_query).fetchone()[0] or 0  # Default to 0 if result is None
+
+sentence = (
+            f"The product '{description}', made by {manufacturer_name} and branded by {brand_name}, "
+            f"has sold a total of {number_of_items_sold} units."
+            )
+        
+print(sentence)
+
 
 
  
